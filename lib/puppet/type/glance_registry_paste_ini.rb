@@ -45,11 +45,11 @@ Puppet::Type.newtype(:glance_registry_paste_ini) do
     defaultto('<SERVICE DEFAULT>')
   end
 
-  if Facter['osfamily'].value == 'Debian'
+  if Facter.value(:osfamily) == 'Debian'
     autorequire(:package) do
       'glance-registry'
     end
-  elsif Facter['osfamily'].value == 'RedHat'
+  elsif Facter.value(:osfamily) == 'RedHat'
     autorequire(:package) do
       'openstack-glance'
     end
